@@ -1,0 +1,46 @@
+local Nitrogen = {}
+local NitrogenInjected = true
+shared.NitrogenPrivate = false
+shared.NitrogenPublic = true
+local NitrogenEnabled = true
+local NitrogenDebug = false
+local NitrogenObjects = {}
+local NitrogenFunctions = {}
+local NitrogenEvents = {}
+local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+local screenGui = Instance.new("ScreenGui", playerGui)
+screenGui.Name = "NitroGui"
+screenGui.ResetOnSpawn = true
+function NitrogenEvents:CreateButton()
+	local button = Instance.new("TextButton")
+	button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	button.BackgroundTransparency = 1
+	button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	button.BorderSizePixel = 0
+	button.Font = Enum.Font.Gotham
+	button.TextColor3 = Color3.fromRGB(0, 0, 0)
+	button.TextScaled = true
+	button.TextSize = 14
+	button.TextWrapped = true
+end
+function NitrogenEvents:CreateNotification(text, duration)
+	local notification = Instance.new("TextLabel", screenGui)
+	notification.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	notification.BackgroundTransparency = 1
+	notification.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	notification.BorderSizePixel = 0
+	notification.Font = Enum.Font.Gotham
+	notification.TextColor3 = Color3.fromRGB(0, 0, 0)
+	notification.TextScaled = true
+	notification.TextSize = 14
+	notification.TextWrapped = true
+	notification.Text = text
+	notification.Size = UDim2.new(0.2, 0, 0.05, 0)
+	notification.Position = UDim2.new(0.4, 0, 0.95, 0)
+	task.delay(duration, function()
+		notification:Destroy()
+	end)
+end
+function runfunc(func)
+	func()
+end
